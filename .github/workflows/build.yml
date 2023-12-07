@@ -15,26 +15,25 @@ jobs:
         run: go version
         shell: bash
       - uses: actions/checkout@v4
-      # - uses: kevincobain2000/action-gobrew@v2
-      #   with:
-      #     version: ${{ matrix.go-version }}
-      # - name: Go version after
-      #   run: go version
+      - uses: kevincobain2000/action-gobrew@v2
+        with:
+          version: ${{ matrix.go-version }}
       - run: echo "$PATH"
         shell: bash
       #####
-      - name: gobrew setup
-        run: |
-          echo "$HOME/.gobrew/current/bin" >> $GITHUB_PATH
-          echo "$HOME/.gobrew/bin"  >> $GITHUB_PATH
-          echo "$HOME/go/bin"  >> $GITHUB_PATH
-          curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
-        shell: bash
-      - name: gobrew use
-        run: gobrew use latest
-        shell: bash
+      # - name: gobrew setup
+      #   run: |
+      #     echo "$HOME/.gobrew/current/bin" >> $GITHUB_PATH
+      #     echo "$HOME/.gobrew/bin"  >> $GITHUB_PATH
+      #     echo "$HOME/go/bin"  >> $GITHUB_PATH
+      #     curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
+      #   shell: bash
+      # - name: gobrew use
+      #   run: gobrew use latest
+      #   shell: bash
       # 
       - name: Go version after
         run: go version
         shell: bash
       - run: echo "$env:PATH"
+        shell: bash
