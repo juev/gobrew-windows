@@ -33,7 +33,7 @@ jobs:
           curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
         shell: bash
       - name: gobrew use
-        run: gobrew use ${{ inputs.version }}
+        run: gobrew use latest
         shell: bash
       # 
       - name: Go version after
