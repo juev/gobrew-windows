@@ -22,6 +22,7 @@ jobs:
       - name: Go version after
         run: go version
       - run: echo "$env:PATH"
+        shell: bash
       # - name: Show ENVs after
       #   run: set
       #####
@@ -36,4 +37,5 @@ jobs:
       # 
       - name: Go version after
         run: go version
+        shell: bash
       - run: echo "$env:PATH"
