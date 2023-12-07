@@ -1,5 +1,7 @@
 name: CI
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
 jobs:
   build:
     strategy:
@@ -10,6 +12,7 @@ jobs:
     steps:
       # - name: Show ENVs before
       #   run: set
+      - run: echo "$PATH"
       - name: Go version before
         run: go version
       - uses: actions/checkout@v4
@@ -18,5 +21,21 @@ jobs:
           version: ${{ matrix.go-version }}
       - name: Go version after
         run: go version
+      - run: echo "$PATH"
       # - name: Show ENVs after
       #   run: set
+      #####
+      - name: gobrew setup
+        run: |
+          echo "$HOME/.gobrew/current/bin" >> $env:GITHUB_PATH
+          echo "$HOME/.gobrew/bin"  >> $env:GITHUB_PATH
+          echo "$HOME/go/bin"  >> $env:GITHUB_PATH
+          curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
+        shell: bash
+      - name: gobrew use
+        run: gobrew use ${{ inputs.version }}
+        shell: bash
+      # 
+      - name: Go version after
+        run: go version
+      - run: echo "$PATH"
