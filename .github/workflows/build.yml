@@ -31,12 +31,9 @@ jobs:
           echo "$HOME\.gobrew\bin"  >> $env:GITHUB_PATH
           echo "$HOME\go\bin"  >> $env:GITHUB_PATH
           curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
-        shell: pwsh
       - name: gobrew use
         run: gobrew use latest
-        shell: pwsh
       # 
       - name: Go version after
         run: go version
-        shell: pwsh
       - run: echo "$env:PATH"
