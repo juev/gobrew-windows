@@ -1,0 +1,22 @@
+name: CI
+on: workflow_dispatch
+jobs:
+  build:
+    strategy:
+      matrix:
+        go-version: [latest]
+        os: [windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Show ENVs before
+        run: set
+      - name: Go version before
+        run: go version
+      - uses: actions/checkout@v4
+      - uses: kevincobain2000/action-gobrew@v2
+        with:
+          version: ${{ matrix.go-version }}
+      - name: Go version after
+        run: go version
+      - name: Show ENVs after
+        run: set
