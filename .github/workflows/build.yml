@@ -27,9 +27,9 @@ jobs:
       #####
       - name: gobrew setup
         run: |
-          echo "$HOME/.gobrew/current/bin" >> $env:GITHUB_PATH
-          echo "$HOME/.gobrew/bin"  >> $env:GITHUB_PATH
-          echo "$HOME/go/bin"  >> $env:GITHUB_PATH
+          echo "$HOME\.gobrew\current\bin" >> $env:GITHUB_PATH
+          echo "$HOME\.gobrew\bin"  >> $env:GITHUB_PATH
+          echo "$HOME\go\bin"  >> $env:GITHUB_PATH
           curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh
         shell: pwsh
       - name: gobrew use
